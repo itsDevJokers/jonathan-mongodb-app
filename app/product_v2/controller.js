@@ -7,7 +7,17 @@ const fs = require('fs');
 const { ObjectId } = require('mongodb');
 
 const getAll = (req, res) => {
-    Product.find()
+    const {q} = req.query;
+    let nameQuery = {};
+    q && (
+        nameQuery = {
+            name: q
+        }
+    )
+    !q && (
+        nameQuery = {}
+    )
+    Product.find(nameQuery)
         .then(result => res.send(result))
         .catch(error => res.send(error))
 }

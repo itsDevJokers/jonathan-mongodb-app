@@ -8,7 +8,17 @@ const path = require('path');
 const fs = require('fs');
 
 const get = (req, res) => {
-    db.collection('products').find()
+    const {q} = req.query;
+    let nameQuery = {};
+    q && (
+        nameQuery = {
+            name: q
+        }
+    )
+    !q && (
+        nameQuery = {}
+    )
+    db.collection('products').find(nameQuery)
         .toArray()
         .then(result => res.send(result))
         .catch(error => res.send(error))
