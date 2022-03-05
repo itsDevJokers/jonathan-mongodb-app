@@ -37,7 +37,7 @@ const create = (req,res) => {
         // target path ketika file image diupload dan mengubah nama sesuai aslinya
         const target = path.join(__dirname, '../../uploads', image.originalname); 
         fs.renameSync(image.path, target);
-        Product.create({name, price, stock, status, image: `http://localhost:${port}/uploads/${image.originalname}`})
+        Product.create({name, price, stock, status, image: `https://jonathan-mongodb-app.herokuapp.com/uploads/${image.originalname}` })
             .then(result => res.send(result))
             .catch(error => res.send(error))
     } 
@@ -54,7 +54,7 @@ const update = (req,res) => {
         fs.renameSync(image.path, target);
         Product.updateOne({
             _id: ObjectId(id)
-        },{name, price, stock, status, image: `http://localhost:${port}/uploads/${image.originalname}`})
+        },{name, price, stock, status, image: `https://jonathan-mongodb-app.herokuapp.com/uploads/${image.originalname}` })
             .then(result => res.send(result))
             .catch(error => res.send(error))
     } else {
