@@ -13,6 +13,12 @@ const productRouterV2 = require('./app/product_v2/routes');
 app.use(cors()); // cors atau middleware untuk mengijinkan request data dari client
 app.use(logger('dev')); // middleware untuk mengetahui aktivitas request
 
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 // kedua middleware berfungsi untuk parsing data ke dalam bentuk json berdasarkan body-parse
 app.use(express.urlencoded({extended: true})); 
 app.use(express.json());
