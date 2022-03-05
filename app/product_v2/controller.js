@@ -11,13 +11,13 @@ const getAll = (req, res) => {
     let nameQuery = {};
     q && (
         nameQuery = {
-            name: q
+            name: `/${q}/i`
         }
     )
     !q && (
         nameQuery = {}
     )
-    Product.find(nameQuery)
+    Product.find(nameQuery).exec()
         .then(result => res.send(result))
         .catch(error => res.send(error))
 }
