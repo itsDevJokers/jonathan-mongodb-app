@@ -11,7 +11,7 @@ const getAll = (req, res) => {
     let nameQuery = {};
     q && (
         nameQuery = {
-            name: `/${q}/i`
+            name: new RegExp(q, 'i')
         }
     )
     !q && (
