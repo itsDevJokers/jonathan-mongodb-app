@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(`mongodb+srv://adminDatabase:adminDatabase@cluster0.vrldz.mongodb.net/eduwork-mongoose?retryWrites=true&w=majority`);
+const url = process.env.MONGODB_URL_1;
+mongoose.connect(url);
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
