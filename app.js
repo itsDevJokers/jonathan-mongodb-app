@@ -2,7 +2,7 @@
 require('./config/mongoose');
 const express = require('express');
 const path = require('path');
-// const cors = require('cors');
+const cors = require('cors');
 const app = express();
 const logger = require('morgan');
 const port = process.env.PORT || 8000;
@@ -10,7 +10,7 @@ const productRouter = require('./app/product/routes');
 const productRouterV2 = require('./app/product_v2/routes');
 
 
-// app.use(cors()); // cors atau middleware untuk mengijinkan request data dari client
+app.use(cors()); // cors atau middleware untuk mengijinkan request data dari client
 app.use(logger('dev')); // middleware untuk mengetahui aktivitas request
 
 // kedua middleware berfungsi untuk parsing data ke dalam bentuk json berdasarkan body-parse
