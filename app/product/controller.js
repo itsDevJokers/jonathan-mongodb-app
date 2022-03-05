@@ -1,8 +1,6 @@
 const { ObjectId } = require('mongodb');
 const db = require('../../config/mongodb');
 
-const port = process.env.PORT || 8000; //port 
-
 // import path dan file system untuk mengelola file upload pada create dan update
 const path = require('path'); 
 const fs = require('fs');
@@ -44,7 +42,7 @@ const create = (req, res) => {
             price: parseInt(price), 
             stock: parseInt(stock), 
             status: status == true ? true : false, 
-            image: `http://localhost:${port}/uploads/${image.originalname}` 
+            image: `https://jonathan-mongodb-app.herokuapp.com/uploads/${image.originalname}` 
         })
             .then(result => res.send(result))
             .catch(error => res.send(error))
@@ -67,7 +65,7 @@ const update = (req, res) => {
                 price: parseInt(price), 
                 stock: parseInt(stock), 
                 status: status == true ? true : false, 
-                image: `http://localhost:${port}/uploads/${image.originalname}` }}
+                image: `https://jonathan-mongodb-app.herokuapp.com/uploads/${image.originalname}` }}
         )
             .then(result => res.send(result))
             .catch(error => res.send(error))
