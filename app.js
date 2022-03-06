@@ -2,7 +2,7 @@
 require('./config/mongoose');
 const express = require('express');
 const path = require('path');
-const cors = require('cors');
+// const cors = require('cors');
 const app = express();
 const logger = require('morgan');
 const port = process.env.PORT || 8000;
@@ -12,10 +12,11 @@ const productRouterV2 = require('./app/product_v2/routes');
 
 app.use(logger('dev')); // middleware untuk mengetahui aktivitas request
 
-app.use(cors({
-    credentials: true,
-    origin: 'http://localhost:3002'
-})); // cors atau middleware untuk mengijinkan request data dari client
+// app.use(cors({
+//     credentials: true,
+//     origin: 'http://localhost:3002'
+// })); // cors atau middleware untuk mengijinkan request data dari client
+
 app.use((req,res,next) => {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3002');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
