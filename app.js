@@ -13,7 +13,7 @@ const productRouterV2 = require('./app/product_v2/routes');
 app.use(logger('dev')); // middleware untuk mengetahui aktivitas request
 
 app.use(cors({
-    origin: `https://jonathan-mongodb-app.herokuapp.com`,
+    origin: `https://jonathan-mongodb-app.herokuapp.com/api/v2/`,
     credentials: true
 })); // cors atau middleware untuk mengijinkan request data dari client
 
