@@ -18,9 +18,9 @@ app.use(logger('dev')); // middleware untuk mengetahui aktivitas request
 // })); // cors atau middleware untuk mengijinkan request data dari client
 
 app.use((req,res,next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3002/');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 })
 // kedua middleware berfungsi untuk parsing data ke dalam bentuk json berdasarkan body-parse
