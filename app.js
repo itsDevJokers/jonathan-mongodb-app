@@ -18,7 +18,7 @@ app.use(logger('dev')); // middleware untuk mengetahui aktivitas request
 // })); // cors atau middleware untuk mengijinkan request data dari client
 
 app.use((req,res,next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3002, http://localhost:3002/tambah');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
