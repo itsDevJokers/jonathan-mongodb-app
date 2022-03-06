@@ -2,7 +2,7 @@
 require('./config/mongoose');
 const express = require('express');
 const path = require('path');
-// const cors = require('cors');
+const cors = require('cors');
 const app = express();
 const logger = require('morgan');
 const port = process.env.PORT || 8000;
@@ -12,17 +12,14 @@ const productRouterV2 = require('./app/product_v2/routes');
 
 app.use(logger('dev')); // middleware untuk mengetahui aktivitas request
 
-// app.use(cors({
-//     credentials: true,
-//     origin: 'http://localhost:3002'
-// })); // cors atau middleware untuk mengijinkan request data dari client
+app.use(cors()); // cors atau middleware untuk mengijinkan request data dari client
 
-app.use((req,res,next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-})
+// app.use((req,res,next) => {
+//     res.setHeader('Access-Control-Allow-Origin', '*');
+//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+// })
 // kedua middleware berfungsi untuk parsing data ke dalam bentuk json berdasarkan body-parse
 app.use(express.urlencoded({extended: true})); 
 app.use(express.json());
