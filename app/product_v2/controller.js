@@ -30,6 +30,7 @@ const getById = (req, res) => {
 }
 
 const create = (req,res) => {
+    res.header("Access-Control-Allow-Origin", "true");
     const {name, price, stock, status} = req.body; // request dari body bisa berupa form atau json
     const image = req.file; // file image
     // jika image diupload
